@@ -48,4 +48,4 @@ make clean
 #+end_src
 
 ** License
-Released under the MIT license; refer to =LICENSE=.
+Released under the MIT license; refer to =LICENSE= for more details.
