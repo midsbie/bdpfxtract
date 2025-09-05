@@ -16,7 +16,7 @@ class BdpForexToCsvApp:
     """Application entry point to parse an XLSX and merge/write a CSV.
 
     Usage:
-      python -m bdpfxtract.cmd.bdp_forex_to_csv --input sample.xlsx --output out.csv
+      python -m bdpfxtract.cmd.cli sample.xlsx out.csv
     """
 
     def __init__(self) -> None:
@@ -46,8 +46,8 @@ def build_arg_parser() -> argparse.ArgumentParser:
             "with columns: Date, Currency, Rate (FC per 1 EUR)."
         ),
     )
-    p.add_argument("--input", "-i", required=True, help="Path to XLSX input file")
-    p.add_argument("--output", "-o", required=True, help="Path to CSV output file")
+    p.add_argument("input", help="Path to XLSX input file")
+    p.add_argument("output", help="Path to CSV output file")
     return p
 
 

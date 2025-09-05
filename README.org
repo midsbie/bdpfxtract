@@ -21,17 +21,13 @@ Run the command directly:
 
 - By invoking the convenience script
 #+begin_src shell
-bdpfxtract \
-  --input sample.xlsx \
-  --output out.csv
+bdpfxtract sample.xlsx output out.csv
 #+end_src
 
 
 - As a module:
 #+begin_src shell
-python -m bdpfxtract.cmd.cli \
-  --input sample.xlsx \
-  --output out.csv
+python -m bdpfxtract.cmd.cli  sample.xlsx out.csv
 #+end_src
 
 Behavior:
