@@ -1,0 +1,11 @@
+# Directories
+.venv
+
+*.egg-info
+
+# Files
+.env
+.~*
+*.csv
+*.ods
+*.xls*
