@@ -1,0 +1,52 @@
+* bdpfxtract
+
+A small toolkit for converting and merging official FOREX data exports from the Banco de Portugal.
+
+** What it does
+- Parses Banco de Portugal FOREX worksheets (XLSX) and produces/merges a CSV.
+- CSV schema: =date=, =currency=, =rate=.
+
+FOREX worksheets can be downloaded from the Banco de Portugal's official website:
+https://bpstat.bportugal.pt/conteudos/quadros/2033
+
+** Install
+- Requires Python >= 3.9.
+- Developer setup:
+#+begin_src shell
+make setup
+#+end_src
+
+** Usage (FOREX to CSV)
+Run the command directly:
+
+- By invoking the convenience script
+#+begin_src shell
+bdpfxtract \
+  --input sample.xlsx \
+  --output out.csv
+#+end_src
+
+
+- As a module:
+#+begin_src shell
+python -m bdpfxtract.cmd.cli \
+  --input sample.xlsx \
+  --output out.csv
+#+end_src
+
+Behavior:
+- Reads the XLSX, extracts rates for each currency and date.
+- Merges into the target CSV if it exists, otherwise creates it.
+- Output is sorted by =date= then =currency=.
+
+Input expectations (based on official exports):
+- Column =A= holds the date (Excel serial); columns =B=.. contain currency series.
+- Row =2= includes titles like =… (USD) - diário=; currency code is taken from the
+  ISO code inside parentheses.
+
+** Development
+- Linting and formatting via ruff
+- Clean build artifacts:
+#+begin_src shell
+make clean
+#+end_src
