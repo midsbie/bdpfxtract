@@ -13,7 +13,7 @@ logger = configure_logging()
 class CsvRepository:
     """Loads and persists ForexRecord items to CSV with merge semantics."""
 
-    header = ("Date", "Currency", "Price")
+    header = ("date", "currency", "rate")
 
     def load(self, path: Path) -> dict[tuple[str, str], Decimal]:
         data: dict[tuple[str, str], Decimal] = {}
@@ -29,10 +29,10 @@ class CsvRepository:
             if missing_cols:
                 raise ValueError(f"CSV missing required columns: {missing_cols}")
             for row in reader:
-                k = (row["Date"], row["Currency"])  # type: ignore[index]
+                k = (row["date"], row["currency"])  # type: ignore[index]
                 try:
-                    data[k] = Decimal(row["Price"])  # type: ignore[index]
-                except Exception as exc:  # noqa: BLE001
+                    data[k] = Decimal(row["rate"])  # type: ignore[index]
+                except Exception as exc:
                     logger.warning("Skipping invalid CSV row %r: %s", row, exc)
         return data
 
@@ -45,9 +45,9 @@ class CsvRepository:
             for (date_str, currency), price in rows:
                 writer.writerow(
                     {
-                        "Date": date_str,
-                        "Currency": currency,
-                        "Price": str(price),
+                        "date": date_str,
+                        "currency": currency,
+                        "rate": str(price),
                     }
                 )
 
