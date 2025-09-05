@@ -46,3 +46,6 @@ Input expectations (based on official exports):
 #+begin_src shell
 make clean
 #+end_src
+
+** License
+Released under the MIT license; refer to =LICENSE=.
