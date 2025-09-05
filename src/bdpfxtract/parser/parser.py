@@ -4,7 +4,7 @@ import datetime as dt
 import re
 from decimal import Decimal
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Optional
 
 from openpyxl import load_workbook
 from openpyxl.utils.datetime import from_excel
@@ -29,8 +29,8 @@ class HeaderParser:
 
     CODE_RE = re.compile(r"\(([A-Z]{3})\)")
 
-    def build_currency_map(self, ws: Worksheet) -> Dict[int, str]:
-        mapping: Dict[int, str] = {}
+    def build_currency_map(self, ws: Worksheet) -> dict[int, str]:
+        mapping: dict[int, str] = {}
         header_row = 2
         # Start from column 2 (B) because column 1 (A) is the date column.
         for col_idx in range(2, ws.max_column + 1):
@@ -108,9 +108,9 @@ class RowParser:
         return None
 
     def parse_rows(
-        self, ws: Worksheet, currency_map: Dict[int, str], start_row: int = 5
-    ) -> List[ForexRecord]:
-        records: List[ForexRecord] = []
+        self, ws: Worksheet, currency_map: dict[int, str], start_row: int = 5
+    ) -> list[ForexRecord]:
+        records: list[ForexRecord] = []
         for row_idx in range(start_row, ws.max_row + 1):
             date_cell = ws.cell(row=row_idx, column=1)
             date_value = self._coerce_date(date_cell.value)
@@ -133,7 +133,7 @@ class BdpForexParser:
     def __init__(self) -> None:
         self._header = HeaderParser()
 
-    def parse(self, xlsx_path: Path) -> List[ForexRecord]:
+    def parse(self, xlsx_path: Path) -> list[ForexRecord]:
         wb = load_workbook(filename=str(xlsx_path), data_only=True)
         ws = wb.active
         currencies = self._header.build_currency_map(ws)
