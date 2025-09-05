@@ -4,7 +4,7 @@ import csv
 from decimal import Decimal
 from pathlib import Path
 
-from bdpfxtract.logging.logging import configure_logging
+from bdpfxtract.logging import configure_logging
 from bdpfxtract.model import ForexRecord
 
 logger = configure_logging()

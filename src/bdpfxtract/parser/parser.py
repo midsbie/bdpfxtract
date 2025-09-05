@@ -10,7 +10,7 @@ from openpyxl import load_workbook
 from openpyxl.utils.datetime import from_excel
 from openpyxl.worksheet.worksheet import Worksheet
 
-from bdpfxtract.logging.logging import configure_logging
+from bdpfxtract.logging import configure_logging
 from bdpfxtract.model import ForexRecord
 
 logger = configure_logging()
