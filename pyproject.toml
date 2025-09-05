@@ -11,7 +11,7 @@ dependencies = [
 ]
 
 [project.scripts]
-bdpfxtract = "bdpfxtract.cmd.bdpfxtract:main"
+bdpfxtract = "bdpfxtract.cmd.cli:main"
 
 [project.optional-dependencies]
 dev = [

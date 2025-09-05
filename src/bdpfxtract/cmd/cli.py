@@ -40,10 +40,10 @@ class BdpForexToCsvApp:
 
 def build_arg_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
-        prog="bdp-forex-to-csv",
+        prog="bdpfxtract",
         description=(
             "Parse a Banco de Portugal FOREX XLSX and merge or create a CSV "
-            "with columns: Date, Currency, Price."
+            "with columns: Date, Currency, Rate (FC per 1 EUR)."
         ),
     )
     p.add_argument("--input", "-i", required=True, help="Path to XLSX input file")
@@ -62,11 +62,11 @@ def main(argv: Optional[Iterable[str]] = None) -> int:
 
     try:
         BdpForexToCsvApp().run(xlsx, out_csv)
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         logger.exception("Failed to process workbook: %s", exc)
         return 1
     return 0
 
 
-if __name__ == "__main__":  # pragma: no cover
+if __name__ == "__main__":
     raise SystemExit(main())
