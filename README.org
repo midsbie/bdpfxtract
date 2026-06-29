@@ -11,23 +11,16 @@ https://bpstat.bportugal.pt/conteudos/quadros/2033
 
 ** Install
 - Requires Python >= 3.9.
+- Install [[https://docs.astral.sh/uv/][uv]].
 - Developer setup:
 #+begin_src shell
 make setup
 #+end_src
 
 ** Usage (FOREX to CSV)
-Run the command directly:
-
-- By invoking the convenience script
+Run the command through the project environment:
 #+begin_src shell
-bdpfxtract sample.xlsx out.csv
-#+end_src
-
-
-- As a module:
-#+begin_src shell
-python -m bdpfxtract.cmd.cli  sample.xlsx out.csv
+uv run bdpfxtract sample.xlsx out.csv
 #+end_src
 
 Behavior:

@@ -16,6 +16,7 @@ class BdpForexToCsvApp:
     """Application entry point to parse an XLSX and merge/write a CSV.
 
     Usage:
+      bdpfxtract sample.xlsx out.csv
       python -m bdpfxtract.cmd.cli sample.xlsx out.csv
     """
 

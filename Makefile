@@ -1,6 +1,8 @@
 .PHONY: setup
 setup:
-	pip install -e .[dev]
+	@# A Python version is not explicitly specified via the --python flag because it is picked up from
+	@# the special .python-version file.
+	uv sync --dev
 
 .PHONY: clean
 clean:
